@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Appointments List</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <header>
+        <h1>Appointments</h1>
+    </header>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Date</th>
+                    <th>Contact Number</th>
+                    <th>Department</th>
+                    <th>National ID</th>
+                    <th>Reason</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="appointment : ${appointments}">
+                    <td th:text="${appointment.firstName}"></td>
+                    <td th:text="${appointment.lastName}"></td>
+                    <td th:text="${#temporals.format(appointment.dateOfAppointment, 'dd.MM.yyyy')}"></td>
+                    <td th:text="${appointment.contactNumber}"></td>
+                    <td th:text="${appointment.department}"></td>
+                    <td th:text="${appointment.nationalId}"></td>
+                    <td th:text="${appointment.reason}"></td>
+                    <td>
+                        <a th:href="@{/appointments/edit/{id}(id=${appointment.id})}">Edit</a>
+                        <form th:action="@{/appointments/delete/{id}(id=${appointment.id})}" method="post" style="display:inline;">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/}" class="button">Add New Appointment</a>
+    </div>
+</body>
+</html>

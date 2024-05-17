@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hospital Appointment Form</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <header>
+        <h1>Hospital Appointment Form</h1>
+    </header>
+    <div class="container">
+        <form th:action="@{/}" th:object="${appointment}" method="post">
+            <div>
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" th:field="*{firstName}" />
+                <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</div>
+            </div>
+            <div>
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" th:field="*{lastName}" />
+                <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name Error</div>
+            </div>
+            <div>
+                <label for="dateOfAppointment">Appointment Date:</label>
+                <input type="date" id="dateOfAppointment" th:field="*{dateOfAppointment}" />
+                <div th:if="${#fields.hasErrors('dateOfAppointment')}" th:errors="*{dateOfAppointment}">Date Error</div>
+            </div>
+            <div>
+                <label for="contactNumber">Contact Number:</label>
+                <input type="text" id="contactNumber" th:field="*{contactNumber}" />
+                <div th:if="${#fields.hasErrors('contactNumber')}" th:errors="*{contactNumber}">Contact Error</div>
+            </div>
+            <div>
+                <label for="department">Department:</label>
+                <select id="department" th:field="*{department}">
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="Dermatology">Dermatology</option>
+                    <option value="Neurology">Neurology</option>
+                    <option value="Pediatrics">Pediatrics</option>
+                </select>
+                <div th:if="${#fields.hasErrors('department')}" th:errors="*{department}">Department Error</div>
+            </div>
+            <div>
+                <label for="nationalId">National ID:</label>
+                <input type="text" id="nationalId" th:field="*{nationalId}" />
+                <div th:if="${#fields.hasErrors('nationalId')}" th:errors="*{nationalId}">National ID Error</div>
+            </div>
+            <div>
+                <label for="reason">Reason:</label>
+                <input type="text" id="reason" th:field="*{reason}" />
+                <div th:if="${#fields.hasErrors('reason')}" th:errors="*{reason}">Reason Error</div>
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+			<a th:href="@{/appointments}" class="button">My Appointments</a>
+			<p><a href="form.html?language=tr">Türkçe</a> | <a href="form.html?language=en">English</a> | <a href="form.html?language=en">Deustch</a></p>
+			
+        </form>
+    </div>
+</body>
+</html>

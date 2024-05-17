@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Appointment Details</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <header>
+        <h1>Appointment Details</h1>
+    </header>
+    <div class="container">
+        <p>First Name: <span th:text="${appointment.firstName}"></span></p>
+        <p>Last Name: <span th:text="${appointment.lastName}"></span></p>
+        <p>Appointment Date: <span th:text="${#temporals.format(appointment.dateOfAppointment, 'dd.MM.yyyy')}"></span></p>
+        <p>Contact Number: <span th:text="${appointment.contactNumber}"></span></p>
+        <p>Department: <span th:text="${appointment.department}"></span></p>
+        <p>National ID: <span th:text="${appointment.nationalId}"></span></p>
+        <p>Reason: <span th:text="${appointment.reason}"></span></p>
+        <a th:href="@{/}" class="button">Add New Appointment</a>
+    </div>
+</body>
+</html>
